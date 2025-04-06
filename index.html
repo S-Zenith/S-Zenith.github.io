@@ -1,7 +1,307 @@
-<p>Hello 大家好</p>
-<p>dscnjkncksdcdsncjkds δ </p>
-<p>很高兴你来到这里</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有趣的交互网页</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .color-box {
+            width: 100%;
+            height: 100px;
+            margin: 10px 0;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        #drawing-canvas {
+            border: 1px solid #ccc;
+            background: white;
+        }
+        .hidden {
+            display: none;
+        }
+        #emoji-selector {
+            font-size: 24px;
+        }
+        #meme-container {
+            position: relative;
+            text-align: center;
+        }
+        #meme-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px #000;
+        }
+        @keyframes rainbow {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
+        .rainbow-text {
+            animation: rainbow 3s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>有趣的交互网页</h1>
+    
+    <!-- 颜色选择器 -->
+    <section id="color-section">
+        <h2>🎨 颜色选择器</h2>
+        <input type="color" id="color-picker" value="#ff0000">
+        <div id="color-box" class="color-box"></div>
+        <p>当前颜色: <span id="color-value">#ff0000</span></p>
+    </section>
+    
+    <!-- 点击计数器 -->
+    <section id="counter-section">
+        <h2>🔢 点击计数器</h2>
+        <button id="counter-button">点击我</button>
+        <p>点击次数: <span id="counter">0</span></p>
+    </section>
+    
+    <!-- 简易画板 -->
+    <section id="drawing-section">
+        <h2>🎨 简易画板</h2>
+        <canvas id="drawing-canvas" width="400" height="200"></canvas>
+        <div>
+            <button id="clear-canvas">清空画板</button>
+            <input type="color" id="pen-color" value="#000000">
+            <input type="range" id="pen-size" min="1" max="20" value="5">
+        </div>
+    </section>
+    
+    <!-- 弹窗效果 -->
+    <section id="modal-section">
+        <h2>📦 弹窗效果</h2>
+        <button id="open-modal">打开弹窗</button>
+        <div id="modal" class="hidden">
+            <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                       background-color: rgba(0,0,0,0.5); display: flex; 
+                       justify-content: center; align-items: center;">
+                <div style="background: white; padding: 20px; border-radius: 8px;
+                           width: 300px; text-align: center;">
+                    <h3>这是一个弹窗!</h3>
+                    <p>点击按钮关闭弹窗。</p>
+                    <button id="close-modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 表情选择器 -->
+    <section id="emoji-section">
+        <h2>😄 表情选择器</h2>
+        <select id="emoji-selector">
+            <option value="😊">😊 开心</option>
+            <option value="😭">😭 哭泣</option>
+            <option value="😎">😎 酷</option>
+            <option value="🤔">🤔 思考</option>
+        </select>
+        <p>你选择了: <span id="selected-emoji">😊</span></p>
+    </section>
+    
+    <!-- 简易meme生成器 -->
+    <section id="meme-section">
+        <h2>📸 简易meme生成器</h2>
+        <div id="meme-container">
+            <img id="meme-image" src="https://via.placeholder.com/400x200" style="width: 100%;">
+            <div id="meme-text">这里输入你的meme文字</div>
+        </div>
+        <input type="text" id="meme-input" placeholder="输入meme文字" style="width: 100%; padding: 8px;">
+        <p>提示: 你可以使用方向键调整文字位置</p>
+    </section>
+    
+    <!-- 彩虹文字效果 -->
+    <section id="rainbow-section">
+        <h2>🌈 彩虹文字</h2>
+        <p id="rainbow-demo" class="rainbow-text">这段文字会显示彩虹效果!</p>
+        <button id="toggle-rainbow">切换彩虹效果</button>
+    </section>
 
-<ul>
-  <li> <a href="https://www.baidu.com">一个链接</a> </li>
-</ul>
+    <script>
+        // 颜色选择器
+        const colorPicker = document.getElementById('color-picker');
+        const colorBox = document.getElementById('color-box');
+        const colorValue = document.getElementById('color-value');
+        
+        colorPicker.addEventListener('input', function() {
+            const color = this.value;
+            colorBox.style.backgroundColor = color;
+            colorValue.textContent = color;
+        });
+        
+        // 初始化颜色
+        colorBox.style.backgroundColor = colorPicker.value;
+        
+        // 点击计数器
+        const counterButton = document.getElementById('counter-button');
+        const counterDisplay = document.getElementById('counter');
+        let count = 0;
+        
+        counterButton.addEventListener('click', function() {
+            count++;
+            counterDisplay.textContent = count;
+            
+            // 每点击10次改变按钮颜色
+            if (count % 10 === 0) {
+                counterButton.style.backgroundColor = `hsl(${count * 10 % 360}, 70%, 50%)`;
+            }
+        });
+        
+        // 简易画板
+        const canvas = document.getElementById('drawing-canvas');
+        const ctx = canvas.getContext('2d');
+        const clearButton = document.getElementById('clear-canvas');
+        const penColor = document.getElementById('pen-color');
+        const penSize = document.getElementById('pen-size');
+        
+        let isDrawing = false;
+        
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+        
+        function startDrawing(e) {
+            isDrawing = true;
+            draw(e);
+        }
+        
+        function draw(e) {
+            if (!isDrawing) return;
+            
+            ctx.lineWidth = penSize.value;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = penColor.value;
+            
+            // 获取鼠标相对于canvas的位置
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            if (!ctx.lastX) ctx.lastX = x;
+            if (!ctx.lastY) ctx.lastY = y;
+            
+            ctx.beginPath();
+            ctx.moveTo(ctx.lastX, ctx.lastY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            
+            ctx.lastX = x;
+            ctx.lastY = y;
+        }
+        
+        function stopDrawing() {
+            isDrawing = false;
+            ctx.lastX = null;
+            ctx.lastY = null;
+        }
+        
+        clearButton.addEventListener('click', function() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+        
+        // 弹窗效果
+        const openModalBtn = document.getElementById('open-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const modal = document.getElementById('modal');
+        
+        openModalBtn.addEventListener('click', function() {
+            modal.classList.remove('hidden');
+        });
+        
+        closeModalBtn.addEventListener('click', function() {
+            modal.classList.add('hidden');
+        });
+        
+        // 表情选择器
+        const emojiSelector = document.getElementById('emoji-selector');
+        const selectedEmoji = document.getElementById('selected-emoji');
+        
+        emojiSelector.addEventListener('change', function() {
+            selectedEmoji.textContent = this.value;
+        });
+        
+        // 简易meme生成器
+        const memeInput = document.getElementById('meme-input');
+        const memeText = document.getElementById('meme-text');
+        let memeTextPosition = { x: 0, y: 50 };
+        
+        memeInput.addEventListener('input', function() {
+            memeText.textContent = this.value || '这里输入你的meme文字';
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            // 使用方向键调整文字位置
+            switch(e.key) {
+                case 'ArrowUp':
+                    memeTextPosition.y -= 5;
+                    break;
+                case 'ArrowDown':
+                    memeTextPosition.y += 5;
+                    break;
+                case 'ArrowLeft':
+                    memeTextPosition.x -= 5;
+                    break;
+                case 'ArrowRight':
+                    memeTextPosition.x += 5;
+                    break;
+                default:
+                    return; // 不是方向键则退出
+            }
+            
+            // 更新文字位置
+            memeText.style.transform = `translate(${memeTextPosition.x}px, ${memeTextPosition.y}px)`;
+        });
+        
+        // 彩虹文字效果
+        const rainbowDemo = document.getElementById('rainbow-demo');
+        const toggleRainbow = document.getElementById('toggle-rainbow');
+        
+        toggleRainbow.addEventListener('click', function() {
+            rainbowDemo.classList.toggle('rainbow-text');
+        });
+    </script>
+</body>
+</html>
