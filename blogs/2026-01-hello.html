@@ -12,12 +12,19 @@
 
 <body>
 
-    <header>
+    <div class="page-container">
+    <header class="site-header">
+        <div class="header-left">
         <h1>写在 2026 年的开始</h1>
         <nav>
-            <a href="../index.html">首页</a>
-            <a href="../blogs.html" class="active">博客</a>
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About me</a>
+            <a href="../projects.html">Projects</a>
+            <a href="../blogs.html" class="active">Blogs</a>
         </nav>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙
+        </button>
     </header>
 
     <section class="blog-list">
@@ -34,9 +41,10 @@
     </section>
 
     <footer>
-        © 2026 你的名字
+        © 2026 S-Zenith
     </footer>
-
+    <script src="../js/theme.js"></script>
+    </div>
 </body>
 
 </html>
