@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>你的名字 · 个人主页</title>
+    <title>S-Zenith</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/style.css">
@@ -11,47 +11,56 @@
 </head>
 
 <body>
-
-    <header>
+    <div class="page-container">
+    <header class="site-header">
+        <div class="header-left">
         <img src="images/avatar.png" alt="我的头像" class="home-avatar">
 
-        <h1>你的名字</h1>
-        <p class="home-subtitle">前端 / 设计 / 开发者</p>
+        <h1>Songchun Xu</h1>
+        <p class="home-subtitle">THU / SEU<br>
+            Integrated Circuits / Electronic Engineering
+        </p>
 
         <nav>
-            <a href="index.html" class="active">首页</a>
-            <a href="about.html">关于我</a>
-            <a href="projects.html">项目</a>
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About me</a>
+            <a href="projects.html">Projects</a>
+            <a href="blogs.html">Blogs</a>
         </nav>
+        </div>
+        
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙
+        </button>
     </header>
 
     <section>
-        <h2>简介</h2>
+        <h2>Introduction</h2>
         <p>
-            欢迎来到我的个人主页。我关注如何用简洁、清晰的方式构建可靠、
-            易用且长期可维护的产品。
+            Let's make the complicated simple, and the temporary eternal here together.<br>
+            "Zenith" stands for the one sword to rule all in Terraria.
         </p>
     </section>
 
     <section>
-        <h2>联系我</h2>
+        <h2>Contact me</h2>
         <p>
-            📧 Email：yourname@example.com<br>
+            📧 Email：gokotta2026@gmail.com<br>
             💼 GitHub：
-            <a href="https://github.com/yourname" target="_blank">
-                github.com/yourname
+            <a href="https://github.com/S-Zenith" target="_blank">
+                github.com/S-Zenith
             </a><br>
-            🌐 Blog：
+            <!-- 🌐 Blog：
             <a href="https://yourblog.com" target="_blank">
                 yourblog.com
-            </a>
+            </a> -->
         </p>
     </section>
 
     <footer>
-        © 2026 你的名字
+        © 2026 S-Zenith
     </footer>
-
+    <script src="js/theme.js"></script>
+    </div>
 </body>
 
 </html>

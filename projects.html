@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>项目 · 你的名字</title>
+    <title>Projects · S-Zenith</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/style.css">
@@ -11,14 +11,19 @@
 </head>
 
 <body>
-
-    <header>
-        <h1>项目</h1>
+    <div class="page-container">
+    <header class="site-header">
+        <div class="header-left">
+        <h1>Projects</h1>
         <nav>
-            <a href="index.html">首页</a>
-            <a href="about.html">关于我</a>
-            <a href="projects.html" class="active">项目</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About me</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="blogs.html">Blogs</a>
         </nav>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙
+        </button>
     </header>
 
     <section>
@@ -54,7 +59,8 @@
     <footer>
         © 2026 你的名字
     </footer>
-
+    <script src="js/theme.js"></script>
+    </div>
 </body>
 
 </html>
