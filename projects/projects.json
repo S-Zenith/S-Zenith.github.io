@@ -1,0 +1,21 @@
+[
+    {
+        "title": "Project1",
+        "image": "images/chip.png",
+        "description": "brief introduction for ...",
+        "link": ""
+    },
+    {
+        "title": "project2",
+        "image": "images/chip.png",
+        "description": "wait for further modification.",
+        "link": ""
+    },
+    {
+        "title": "project3",
+        "image": "images/chip.png",
+        "description": "may change layout",
+        "link": ""
+    }
+]
+

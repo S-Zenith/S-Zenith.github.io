@@ -15,7 +15,7 @@
 
 .about-section p {
     margin-bottom: 12px;
-    color: #444;
+    color: var(--text-color);
 }
 
 .about-section ul {
@@ -24,4 +24,5 @@
 
 .about-section li {
     margin-bottom: 8px;
+    color: var(--text-color);
 }

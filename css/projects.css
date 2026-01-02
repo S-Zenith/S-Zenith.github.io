@@ -1,8 +1,5 @@
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 1000px;
+.projects-list {
+    max-width: 800px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -13,46 +10,80 @@
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
 }
 
 .project-card img {
     width: 100%;
-    height: 160px;
+    height: 240px;
     object-fit: cover;
 }
 
 .project-content {
-    padding: 16px;
+    padding: 24px;
 }
 
 .project-content h3 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: var(--text-color);
 }
 
 .project-content p {
-    font-size: 0.95rem;
-    color: #555;
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+[data-theme="dark"] .project-content p {
+    color: #b0b0b0;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 8px;
+    transition: opacity 0.2s ease;
+}
+
+.project-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 900px) {
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media (max-width: 600px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
+    .projects-list {
+        padding: 0 16px;
+    }
+
+    .project-card {
+        margin-bottom: 24px;
     }
 
     .project-card img {
-        height: 180px;
+        height: 200px;
+    }
+
+    .project-content {
+        padding: 20px;
+    }
+
+    .project-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .project-content p {
+        font-size: 0.95rem;
     }
 }
