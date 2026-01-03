@@ -18,9 +18,13 @@ function renderBlogs(blogs) {
         const article = document.createElement('article');
         article.className = 'blog-item';
         
+        // 判断链接方式：如果是 HTML 文件，直接链接；否则使用查看器
+        const isHTML = blog.filename.endsWith('.html') && blog.type !== 'markdown';
+        const blogUrl = isHTML ? blog.filename : `blogs/blog-viewer.html?file=${encodeURIComponent(blog.filename)}`;
+        
         article.innerHTML = `
             <h3>
-                <a href="${blog.filename}">${blog.title}</a>
+                <a href="${blogUrl}">${blog.title}</a>
             </h3>
             <p class="blog-meta">${blog.date} · ${blog.category}</p>
             <p class="blog-summary">

@@ -4,7 +4,16 @@
         "filename": "blogs/2026-01-hello.html",
         "date": "2026-01-02",
         "category": "随笔",
-        "summary": "关于为什么重新整理了这个网站，以及在新的一年希望在这里留下什么。"
+        "summary": "关于为什么重新整理了这个网站，以及在新的一年希望在这里留下什么。",
+        "type": "html"
+    },
+    {
+        "title": "测试 Markdown 博客",
+        "filename": "blogs/2026-01-example.md",
+        "date": "2026-01-03",
+        "category": "测试",
+        "summary": "这是一篇使用 Markdown 编写的博客示例，展示 Markdown 的各种功能兼容性。",
+        "type": "markdown"
     }
 ]
 

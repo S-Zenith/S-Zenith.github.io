@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Blog Viewer · S-Zenith</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/blogs.css">
+    
+    <!-- Markdown 解析器 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+    
+    <!-- KaTeX 数学公式支持 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+
+<body>
+    <div class="page-container">
+    <header class="site-header">
+        <div class="header-left">
+        <h1 id="blog-title">Loading...</h1>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About me</a>
+            <a href="../projects.html">Projects</a>
+            <a href="../blogs.html" class="active">Blogs</a>
+        </nav>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙
+        </button>
+    </header>
+
+    <section class="blog-content">
+        <p class="blog-meta" id="blog-meta"></p>
+        <div id="blog-body">Loading...</div>
+    </section>
+
+    <footer>
+        © 2026 S-Zenith
+    </footer>
+    <script src="../js/theme.js"></script>
+    <script src="../js/blog-viewer.js"></script>
+    </div>
+</body>
+
+</html>
+
